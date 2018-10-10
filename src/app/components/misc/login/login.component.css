@@ -1,0 +1,82 @@
+
+.s-home {
+  width: 100%;
+  height: 100%;
+  min-height: 786px;
+  background-color: transparent;
+  position: relative;
+  display: table;
+}
+
+.s-home .shadow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+  background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#cc000000', GradientType=0);
+}
+
+.s-home .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .6;
+  background-color: #000000;
+}
+
+.no-js .s-home {
+  background: #000000;
+}
+
+@media only screen and (max-width: 500px) {
+  .s-home {
+    min-height: 642px;
+  }
+
+  .home-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .home-content__main {
+    text-align: center;
+    max-width: none;
+    padding-top: 15rem;
+    padding-right: 25px;
+    width: 85%;
+  }
+
+  .home-content__buttons {
+    padding-top: 1.2rem;
+  }
+
+  .home-content__buttons .btn {
+    width: auto;
+    margin: 1.5rem 0 0 0;
+  }
+
+  .home-social {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .s-home {
+    min-height: 630px;
+  }
+
+  .home-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .home-content__main {
+    padding-top: 16.2rem;
+    width: auto;
+  }
+}

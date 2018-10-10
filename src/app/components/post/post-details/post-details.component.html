@@ -1,0 +1,17 @@
+<h1>{{ post.name }}</h1>
+<p><small>{{ post.user.email }} - {{ post.createdAt | date:'yyyy-MM-dd' }}</small></p>
+<p>{{ post.content }}</p>
+
+<div class="card-columns">
+  <div class="card" *ngFor="let image of post.images" >
+    <img class="card-img-top" [src]="image" alt="Card image cap">
+  </div>
+</div>
+
+<p><small> by {{ post.user.email }} with ❤️</small></p>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <a [routerLink]="['/users', post.user.id, 'posts']" class="badge badge-light"> <i class="fa fa-arrow-left"></i> Back to posts</a>
+  </div>
+</div>

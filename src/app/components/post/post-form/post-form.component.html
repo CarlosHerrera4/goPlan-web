@@ -1,0 +1,70 @@
+<div class="row mb-5">
+  <div class="col-12">
+    <form (ngSubmit)="onSubmitPostForm(postForm)" #postForm="ngForm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-tag"></i></span>
+        </div>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': name.touched && name.errors}" placeholder="Title"
+          name="name" [(ngModel)]="post.name" #name="ngModel" required>
+        <div class="invalid-feedback" *ngIf="name.errors && name.touched && name.errors.required">
+          Please enter a title.
+        </div>
+      </div>
+      
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-edit"></i></span>
+        </div>
+        <textarea type="text" class="form-control" [ngClass]="{'is-invalid': content.touched && content.errors}" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          name="content" [(ngModel)]="post.content" #content="ngModel" required></textarea>
+        <div class="invalid-feedback" *ngIf="content.errors && content.touched && content.errors.required">
+          Please enter content.
+        </div>
+      </div>
+      
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-gears"></i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Tag" name="tag" #tag>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="onClickAddTag(tag)"><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+      
+      <div class="input-group mb-3" *ngFor="let tag of post.tags">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-gear"></i></span>
+        </div>
+        <input type="text" class="form-control" name="tags" [value]="tag" disabled readonly>
+        <div class="input-group-append">
+          <button class="btn btn-outline-danger" type="button" (click)="onClickRemoveTag(tag)"><i class="fa fa-minus"></i></button>
+        </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-file-o"></i></span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" #postFiles required (change)="onChangeImageFile(postFiles)" multiple>
+          <label class="custom-file-label">{{ post.imageFiles[0]?.name || 'Choose files' }}</label>
+        </div>
+        <div class="invalid-feedback" *ngIf="postFiles.errors && postFiles.errors.required">
+          Please chose file.
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-3">
+        <div class="col-3" *ngFor="let previewImage of previewImages">
+          <img class="card-img-top img-thumbnail" [src]="previewImage" (error)="onImgPreviewError(image)" #image>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!postForm.valid">Share my life</button>
+      </div>
+    </form>
+  </div>
+</div>

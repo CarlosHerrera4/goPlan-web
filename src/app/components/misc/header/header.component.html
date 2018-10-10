@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+  <div class="container" >
+    <a class="navbar-brand" href="javascript:;">goPlan!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex-grow: 0;">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/users']">Users</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!user">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!user">
+          <a class="nav-link" [routerLink]="['/register']">Register</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav my-2 my-lg-0" *ngIf="user">
+        <li class="nav-item">
+          <a class="nav-link">{{ user.email }}</a></li>
+        <li class="nav-item" routerLinkActive="active">
+          <button class="btn btn-link" (click)="onClickLogout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

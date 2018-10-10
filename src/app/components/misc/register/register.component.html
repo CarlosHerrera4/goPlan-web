@@ -1,0 +1,48 @@
+<div class="row justify-content-md-center mb-3">
+  <div class="col-4">
+    <img src="/assets/img/logo.png" class="app-logo mx-auto d-block">
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-4">
+    <form (ngSubmit)="onSubmitRegister(registerForm)" #registerForm="ngForm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+        </div>
+        <input type="email" class="form-control" [ngClass]="{ 'is-invalid': apiError || email.errors && email.touched }"
+          placeholder="Email" name="email" [(ngModel)]="user.email" #email="ngModel" required email>
+        <div class="invalid-feedback" *ngIf="email.errors && email.touched && email.errors.required">
+          Please chose an email.
+        </div>
+        <div class="invalid-feedback" *ngIf="email.errors && email.touched && email.errors.email">
+          Please enter valid email.
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" [ngClass]="{ 'is-invalid': apiError || password.errors && password.touched }"
+          placeholder="password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+        <div class="invalid-feedback" *ngIf="password.errors && password.touched && password.errors.required">
+          Please enter your password.
+        </div>
+        <div class="invalid-feedback" *ngIf="apiError">
+          {{ apiError.message }}
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!registerForm.valid">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-4">
+    <hr>
+    <a class="btn btn-success btn-block" [routerLink]="['/login']">Login</a>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+
+<app-user-finder (changePattern)="onPatternChange($event)"></app-user-finder>
+
+<div class="card-deck mt-5">
+  <app-user-item *ngFor="let user of users | userFilter:finderPattern" [user]="user"></app-user-item>
+</div>
