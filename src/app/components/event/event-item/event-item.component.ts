@@ -14,8 +14,9 @@ import { User } from '../../../shared/models/user.model';
 })
 export class EventItemComponent implements OnInit, OnDestroy {
   @Input() event: Event = new Event();
-  authUser: Event = new Event();
+  authUser: User = new User();
   onAuthUserChanges: Subscription;
+  authEvent: Event = new Event();
 
   constructor(
     private router: Router,
@@ -26,8 +27,8 @@ export class EventItemComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.authUser = this.sessionService.user;
-    this.onAuthUserChanges = this.sessionService.onUserChanges()
-      .subscribe((event: Event) => this.authUser = event);
+    this.onAuthUserChanges = this.eventService.onEventChanges()
+      .subscribe((event: Event) => this.authEvent = event);
   }
 
   ngOnDestroy() {
