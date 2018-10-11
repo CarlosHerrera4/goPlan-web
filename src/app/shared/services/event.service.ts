@@ -19,6 +19,9 @@ export class EventService extends BaseApiService {
     private users: Array<User> = [];
     private usersSubject: Subject<Array<User>> = new Subject();
 
+    eventSubject: Subject<Event> = new Subject();
+
+
     constructor(private http: HttpClient) {
         super();
     }
@@ -54,9 +57,13 @@ export class EventService extends BaseApiService {
             );
     }
 
-    onUsersChanges(): Observable<Array<User>> {
-        return this.usersSubject.asObservable();
+    onEventChanges(): Observable<Event> {
+        return this.eventSubject.asObservable();
     }
+
+    // onUsersChanges(): Observable<Array<User>> {
+    //     return this.usersSubject.asObservable();
+    // }
 
     private notifyUsersChanges(): void {
         this.usersSubject.next(this.users);
