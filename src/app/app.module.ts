@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+// import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { GlobalErrorHandlerService } from './shared/handlers/global-error-handler.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,9 @@ import { UserFinderComponent } from './components/user/user-finder/user-finder.c
 import { IntroPipe } from './shared/pipes/intro.pipe';
 import { EventItemComponent } from './components/event/event-item/event-item.component';
 import { EventListComponent } from './components/event/event-list/event-list.component';
+import { EventNightlifeComponent } from './components/event/event-list/event-nightlife/event-nightlife.component';
+import { EventSportComponent } from './components/event/event-list/event-sport/event-sport.component';
+import { CategoryPipe } from './category.pipe';
 
 @NgModule({
   declarations: [
@@ -39,13 +43,17 @@ import { EventListComponent } from './components/event/event-list/event-list.com
     UserFinderComponent,
     IntroPipe,
     EventItemComponent,
-    EventListComponent
+    EventListComponent,
+    EventNightlifeComponent,
+    EventSportComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
+    AppRoutingModule
+    // MDBBootstrapModule.forRoot()
   ],
   providers: [
     {

@@ -5,6 +5,7 @@ import { ApiError } from '../models/api-error.model';
 import { BaseApiService } from './base-api.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http'
 import { Observable, Subject } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
@@ -16,6 +17,8 @@ export class EventService extends BaseApiService {
 
     private events: Array<Event> = [];
 
+    private params = new HttpParams().set('category', "cine");
+
     private users: Array<User> = [];
     private usersSubject: Subject<Array<User>> = new Subject();
 
@@ -26,8 +29,10 @@ export class EventService extends BaseApiService {
         super();
     }
 
-    list(): Observable<Array<Event> | ApiError> {
+    allEvents(): Observable<Array<Event> | ApiError> {
+
         return this.http.get<Array<Event>>(EventService.USER_API, BaseApiService.defaultOptions)
+        // return this.http.get<Array<Event>>(EventService.USER_API, this.params)
             .pipe(
                 map((events: Array<Event>) => {
                     events = events.map(event => Object.assign(new Event(), event));
@@ -37,6 +42,19 @@ export class EventService extends BaseApiService {
                 }),
                 catchError(this.handleError)
             );
+    }
+
+    eventsNightlife(): Observable<Array<Event> | ApiError> {
+        return this.http.get<Array<Event>>(EventService.USER_API, BaseApiService.defaultOptions)
+            .pipe(
+                map((events: Array<Event>) => {
+                    events = events.map(event => Object.assign(new Event(), event));
+                    this.events = events;
+                    this.notifyUsersChanges();
+                    return events;
+                }),
+                catchError(this.handleError)
+            );        
     }
 
     create(user: User): Observable<User | ApiError> {

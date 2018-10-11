@@ -17,21 +17,15 @@ export class EventListComponent implements OnInit {
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.eventService.list()
+    this.eventService.allEvents()
       .subscribe(
         (events: Array<Event>) => {
           console.log(events)
           this.events = events
         });
-    // this.onEventsChangesSubscription = this.eventService.onUsersChanges()
-    //   .subscribe(
-    //     (users: Array<User>) => this.users = users
-    //   );
   }
 
-  // ngOnDestroy() {
-  //   this.onUsersChangesSubscription.unsubscribe();
-  // }
+
 
   onPatternChange(pattern: string) {
     this.finderPattern = pattern;
