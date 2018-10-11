@@ -1,4 +1,5 @@
-
+// import { UserService } from './user.service';
+import { Event } from './../models/event.model';
 import { User } from '../models/user.model';
 import { ApiError } from '../models/api-error.model';
 import { BaseApiService } from './base-api.service';
@@ -10,8 +11,10 @@ import { catchError, tap, map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class UserService extends BaseApiService {
-    private static readonly USER_API = `${BaseApiService.BASE_API}/users`;
+export class EventService extends BaseApiService {
+    private static readonly USER_API = `${BaseApiService.BASE_API}/events`;
+
+    private events: Array<Event> = [];
 
     private users: Array<User> = [];
     private usersSubject: Subject<Array<User>> = new Subject();
@@ -20,28 +23,28 @@ export class UserService extends BaseApiService {
         super();
     }
 
-    list(): Observable<Array<User> | ApiError> {
-        return this.http.get<Array<User>>(UserService.USER_API, BaseApiService.defaultOptions)
+    list(): Observable<Array<Event> | ApiError> {
+        return this.http.get<Array<Event>>(EventService.USER_API, BaseApiService.defaultOptions)
             .pipe(
-                map((users: Array<User>) => {
-                    users = users.map(user => Object.assign(new User(), user));
-                    this.users = users;
+                map((events: Array<Event>) => {
+                    events = events.map(event => Object.assign(new Event(), event));
+                    this.events = events;
                     this.notifyUsersChanges();
-                    return users;
+                    return events;
                 }),
                 catchError(this.handleError)
             );
     }
 
     create(user: User): Observable<User | ApiError> {
-        return this.http.post<User>(UserService.USER_API, user, BaseApiService.defaultOptions)
+        return this.http.post<User>(EventService.USER_API, user, BaseApiService.defaultOptions)
             .pipe(
                 map((user: User) => Object.assign(new User(), user)),
                 catchError(this.handleError));
     }
 
     delete(id: string): Observable<void | ApiError> {
-        return this.http.delete<void>(`${UserService.USER_API}/${id}`, BaseApiService.defaultOptions)
+        return this.http.delete<void>(`${EventService.USER_API}/${id}`, BaseApiService.defaultOptions)
             .pipe(
                 tap(() => {
                     this.users = this.users.filter(u => u.id !== id);
