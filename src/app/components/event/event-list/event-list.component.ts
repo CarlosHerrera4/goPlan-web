@@ -27,16 +27,6 @@ export class EventListComponent implements OnInit {
         });
   }
 
-  showTable() {
-    document.getElementById('regionTable').style.display = 'block';
-    document.getElementById('regionMap').style.display = 'none';
-  }
-
-  showMap() {
-    document.getElementById('regionMap').style.display = 'block';
-    document.getElementById('regionTable').style.display = 'none';
-  }
-
 
   onPatternChange(pattern: string) {
     this.finderPattern = pattern;
