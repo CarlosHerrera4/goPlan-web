@@ -25,6 +25,10 @@ import { EventListComponent } from './components/event/event-list/event-list.com
 import { EventNightlifeComponent } from './components/event/event-list/event-nightlife/event-nightlife.component';
 import { EventSportComponent } from './components/event/event-list/event-sport/event-sport.component';
 import { CategoryPipe } from './category.pipe';
+// import { EventMapComponent } from './components/event/event-map/event-map.component';
+// import { AgmCoreModule } from '@agm/core';
+// import { EsriMapComponent } from './esri-map/esri-map.component';
+
 
 @NgModule({
   declarations: [
@@ -47,19 +51,25 @@ import { CategoryPipe } from './category.pipe';
     EventNightlifeComponent,
     EventSportComponent,
     CategoryPipe
+    // EventMapComponent
+
+    // EsriMapComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule
+    // AgmCoreModule.forRoot({
+    //   apiKey: ''
+    // })
     // MDBBootstrapModule.forRoot()
   ],
   providers: [
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandlerService
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

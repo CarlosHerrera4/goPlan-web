@@ -21,10 +21,21 @@ export class EventListComponent implements OnInit {
       .subscribe(
         (events: Array<Event>) => {
           console.log(events)
-          this.events = events
+          this.events = events;
+
+          
         });
   }
 
+  showTable() {
+    document.getElementById('regionTable').style.display = 'block';
+    document.getElementById('regionMap').style.display = 'none';
+  }
+
+  showMap() {
+    document.getElementById('regionMap').style.display = 'block';
+    document.getElementById('regionTable').style.display = 'none';
+  }
 
 
   onPatternChange(pattern: string) {

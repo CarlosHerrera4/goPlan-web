@@ -1,11 +1,44 @@
-<p>
-  event-list works!
-</p>
 
-<div class="card-deck mt-5">
-  <app-event-item *ngFor="let event of events | category:'cine' " [event]="event"></app-event-item>
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group" (click)="showTable()">
+    <button type="button" id="table" class="btn btn-default" >Tabla</button>
+  </div>
+  <div class="btn-group" role="group" (click)="showMap()">
+    <button type="button" id="mapa" class="btn btn-default">Mapa</button>
+  </div>
+</div>
+
+<div id="regionTable">
+  <div>
+    <h2>Cine</h2>
+  </div>
+
+  <div class="card-deck mt-5">
+    <app-event-item *ngFor="let event of events | category:'cine' " [event]="event"></app-event-item>
+    
+    <!-- <div style="background-color: blue; width: 100%; height: 100px"></div> -->
+  </div>
+
+  <div>
+    <h2>Teatro</h2>
+  </div>
+  <div class="card-deck mt-5">
+    <app-event-item *ngFor="let event of events | category:'teatro' " [event]="event"></app-event-item>
+  </div>
+
+
+  <div>
+    <h2>Vida Nocturna</h2>
+  </div>
+  <div class="card-deck mt-5">
+    <app-event-item *ngFor="let event of events | category:'vida nocturna' " [event]="event"></app-event-item>
+  </div>
+</div>
+
+<div id="regionMap" style="display: none;">
+  <!-- <app-event-map >Event map works!</app-event-map> -->
+
   <div style="background-color: blue; width: 100%; height: 100px"></div>
-  <app-event-item *ngFor="let event of events | category:'teatro' " [event]="event"></app-event-item>
 </div>
 
 <!--Carousel Wrapper-->

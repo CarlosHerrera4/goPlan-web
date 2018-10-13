@@ -28,7 +28,11 @@ export class EventItemComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.authUser = this.sessionService.user;
     this.onAuthUserChanges = this.eventService.onEventChanges()
-      .subscribe((event: Event) => this.authEvent = event);
+      .subscribe((event: Event) => {
+        this.authEvent = event;
+        console.log('This: ' + this)
+        debugger
+      });
   }
 
   ngOnDestroy() {
