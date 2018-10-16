@@ -31,7 +31,7 @@ export class EventListComponent implements OnInit {
 
   callType(value) {
     if (value != "") {
-      this.order = value
+      this.order = value  
     }
     
   }

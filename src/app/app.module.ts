@@ -25,6 +25,7 @@ import { EventListComponent } from './components/event/event-list/event-list.com
 import { EventNightlifeComponent } from './components/event/event-list/event-nightlife/event-nightlife.component';
 import { EventSportComponent } from './components/event/event-list/event-sport/event-sport.component';
 import { CategoryPipe } from './category.pipe';
+import { EsriMapComponent } from './components/misc/esri-map/esri-map.component';
 // import { EventMapComponent } from './components/event/event-map/event-map.component';
 // import { AgmCoreModule } from '@agm/core';
 // import { EsriMapComponent } from './esri-map/esri-map.component';
@@ -50,7 +51,8 @@ import { CategoryPipe } from './category.pipe';
     EventListComponent,
     EventNightlifeComponent,
     EventSportComponent,
-    CategoryPipe
+    CategoryPipe,
+    EsriMapComponent
     // EventMapComponent
 
     // EsriMapComponent
