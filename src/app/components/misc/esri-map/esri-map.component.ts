@@ -14,6 +14,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { loadModules } from 'esri-loader';
 import esri = __esri;
+import { Event } from './../../../shared/models/event.model';
+import { EventService } from './../../../shared/services/event.service';
 
 @Component({
   selector: 'app-esri-map',
@@ -24,6 +26,8 @@ export class EsriMapComponent implements OnInit {
 
   @Output() mapLoaded = new EventEmitter<boolean>();
   @ViewChild('mapViewNode') private mapViewEl: ElementRef;
+  @Input() events: Array<Event> = [];
+  @Input () order; 
 
   /**
    * @private _zoom sets map zoom
@@ -32,7 +36,7 @@ export class EsriMapComponent implements OnInit {
    */
   private _zoom: number = 10;
   private _center: Array<number> = [0.1278, 51.5074];
-  private _basemap: string = 'streets';
+  private _basemap: string = 'dark-gray';
 
   @Input()
   set zoom(zoom: number) {
@@ -61,13 +65,22 @@ export class EsriMapComponent implements OnInit {
     return this._basemap;
   }
 
-  constructor() { }
+  constructor( private eventService: EventService ) { }
 
   async initializeMap() {
     try {
-      const [EsriMap, EsriMapView] = await loadModules([
+      const [
+        EsriMap, 
+        EsriMapView,
+        SceneView,
+        GraphicsLayer,
+        Graphic
+      ] = await loadModules([
         'esri/Map',
-        'esri/views/MapView'
+        'esri/views/MapView',
+        'esri/views/SceneView',
+        'esri/layers/GraphicsLayer',
+        'esri/Graphic'
       ]);
 
       // Set type of map
@@ -85,11 +98,43 @@ export class EsriMapComponent implements OnInit {
         map: map
       };
 
-      const mapView: esri.MapView = new EsriMapView(mapViewProperties);
+      // const mapView: esri.MapView = new EsriMapView(mapViewProperties);
+      const mapView: esri.SceneView = new SceneView(mapViewProperties);
+      
+      let point = {
+        type: "point", // autocasts as new Point()
+        x: -0.178,
+        y: 51.48791,
+        z: 1010
+      };
+      let markerSymbol = {
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+        color: [226, 119, 40],
+        outline: { // autocasts as new SimpleLineSymbol()
+          color: [255, 255, 255],
+          width: 2
+        }
+      };
 
+      let pointGraphic = new Graphic({
+        geometry: point,
+        symbol: markerSymbol
+      });
+
+      let graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
+      graphicsLayer.add(pointGraphic);
+
+      // this.eventService.allEvents()
+      //   .subscribe(
+      //     (events: Array<Event>) => {
+      //       this.events = events;
+      //     }
+      //   )
       // All resources in the MapView and the map have loaded.
       // Now execute additional processes
       mapView.when(() => {
+        debugger
         this.mapLoaded.emit(true);
       });
     } catch (error) {

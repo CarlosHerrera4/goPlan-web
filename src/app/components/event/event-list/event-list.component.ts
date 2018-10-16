@@ -1,6 +1,6 @@
 import { EventService } from './../../../shared/services/event.service';
 import { Event } from './../../../shared/models/event.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -14,7 +14,7 @@ export class EventListComponent implements OnInit {
   events: Array<Event> = [];
   // onEventsChangesSubscription: Subscription;
   finderPattern: string;
-  order: string;
+  @Output() order: string;
 
   constructor(private eventService: EventService) { }
 
