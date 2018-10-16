@@ -14,6 +14,7 @@ import { User } from '../../../shared/models/user.model';
 })
 export class EventItemComponent implements OnInit, OnDestroy {
   @Input() event: Event = new Event();
+  @Input() order;
   authUser: User = new User();
   onAuthUserChanges: Subscription;
   authEvent: Event = new Event();

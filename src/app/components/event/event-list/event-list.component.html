@@ -7,15 +7,11 @@
 <div id="filters">
   <div>CATEGORÍA</div>
   <div class="input-group mb-3">
-    <!-- <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Options</label>
-            </div> -->
-    <!-- <span>CATEGORÍA</span> -->
-    <select class="custom-select" id="categoryGroupSelect" value="CATEGORÍA" (change)="onChangeFilter($event.target.value)" >
-      <!-- <option selected>Choose...</option> -->
-      <option value="all">Todas</option>
-      <option value="nightlife-and-concerts">Cine, Teatro y Monólogos</option>
-      <option value="wellness-sport">Deporte y Bienestar</option>
+    <select class="custom-select" #t (change)="callType(t.value)" name="">
+            <option value="">Todas</option>
+            <option value="cine">Cine, Teatro y Monólogos</option>
+            <option value="teatro">Deporte y Bienestar</option>
+
     </select>
   </div>
 
@@ -23,7 +19,7 @@
   <div class="input-group mb-3">
     <!-- <span>FECHA</span> -->
     <select class="custom-select" id="dateGroupSelect">
-      <option value="all">Todas</option>
+      <option value="">Todas</option>
       <option value="today">Hoy</option>
       <option value="tomorrow">Mañana</option>
       <option value="nextWeek">Próxima semana</option>
@@ -38,158 +34,8 @@
   </div>
 
   <div class="card-deck mt-5">
-    <app-event-item *ngFor="let event of events | category:'cine' " [event]="event"></app-event-item>
+    <app-event-item *ngFor="let event of events | category: order" [order]="order" [event]="event"></app-event-item>
   </div>
-  <!-- <div class="row">
-    <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
-      <div class="MultiCarousel-inner">
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-        <div class="item">
-          <div class="pad15">
-            <p class="lead">Multi Item Carousel</p>
-            <p>₹ 1</p>
-            <p>₹ 6000</p>
-            <p>50% off</p>
-          </div>
-        </div>
-      </div>
-      <button class="btn btn-primary leftLst">
-      </button> <button class="btn btn-primary rightLst">
-      </button>
-    </div> -->
+ 
 
-    <div>
-      <h2>Teatro</h2>
-    </div>
-    <div class="card-deck mt-5">
-      <app-event-item *ngFor="let event of events | category:'teatro' " [event]="event"></app-event-item>
-    </div>
-
-
-    <div>
-      <h2>Vida Nocturna</h2>
-    </div>
-    <div class="card-deck mt-5">
-      <app-event-item *ngFor="let event of events | category:'vida nocturna' " [event]="event"></app-event-item>
-    </div>
-
-  </div> 
+</div> 

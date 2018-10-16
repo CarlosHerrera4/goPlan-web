@@ -7,6 +7,7 @@ export class CategoryPipe implements PipeTransform {
 
   transform(values: any[], args?: any): any {
     console.log('Pipe Arguments:', args)
+
     return values.filter(event => event.category === args);
   }
 
