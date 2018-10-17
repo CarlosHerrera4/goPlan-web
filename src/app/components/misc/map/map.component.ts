@@ -17,9 +17,9 @@ export class MapComponent implements OnInit {
   @Input() order: string;
   finderPattern: string;
 
-  zoom: number = 15;
-  lat: number = 40.32855932793948;
-  lng: number = -3.8639136755330643;
+  zoom: number = 13;
+  lat: number = 40.431537;
+  lng: number = -3.700837;
   @ViewChild(AgmMap) public agmMap: AgmMap
 constructor(private eventService: EventService) { }
 
