@@ -28,6 +28,7 @@ export class EventListComponent implements OnInit {
 
           
         });
+        this.order = "";
   }
 
   callType(value) {
