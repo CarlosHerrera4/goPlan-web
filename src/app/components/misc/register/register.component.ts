@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
 
@@ -17,6 +18,7 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) { }
 
   onSubmitRegister(registerForm: FormGroup): void {
+    debugger
     if (registerForm.valid) {
       this.userService.create(this.user)
         .subscribe(

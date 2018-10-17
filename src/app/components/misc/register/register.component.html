@@ -1,10 +1,10 @@
-<div class="row justify-content-md-center mb-3">
+<!-- <div class="row justify-content-md-center mb-3">
   <div class="col-4">
     <img src="/assets/img/logo.png" class="app-logo mx-auto d-block">
   </div>
-</div>
+</div> -->
 
-<div class="row justify-content-md-center">
+<!-- <div class="row justify-content-md-center">
   <div class="col-4">
     <form (ngSubmit)="onSubmitRegister(registerForm)" #registerForm="ngForm">
       <div class="input-group mb-3">
@@ -38,7 +38,85 @@
       </div>
     </form>
   </div>
+</div> -->
+
+<div class="limiter">
+  <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+    <div class="wrap-login100">
+      <form (ngSubmit)="onSubmitRegister(registerForm)" #registerForm="ngForm" class="login100-form validate-form">
+        <span class="login100-form-logo">
+          <img src="/assets/img/logo.png" class="app-logo mx-auto d-block">
+        </span>
+
+        <span class="login100-form-title p-b-34 p-t-27">
+          goPlan!
+        </span>
+
+        <!-- Email -->
+        <div class="wrap-input100 validate-input" data-validate="Enter username">
+          <input type="email" class="form-control input100" [ngClass]="{ 'is-invalid': apiError || email.errors && email.touched }"
+            placeholder="Email" name="email" [(ngModel)]="user.email" #email="ngModel" required email>
+          <div class="invalid-feedback" *ngIf="email.errors && email.touched && email.errors.required">
+            Please chose an email.
+          </div>
+          <div class="invalid-feedback" *ngIf="email.errors && email.touched && email.errors.email">
+            Please enter valid email.
+          </div>
+          <span class="focus-input100" data-placeholder="&#xf207;"></span>
+        </div>
+
+        <!-- Password -->
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+          <input type="password" class="form-control input100" [ngClass]="{ 'is-invalid': apiError || password.errors && password.touched }"
+            placeholder="password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+          <div class="invalid-feedback" *ngIf="password.errors && password.touched && password.errors.required">
+            Please enter your password.
+          </div>
+          <div class="invalid-feedback" *ngIf="apiError">
+            {{ apiError.message }}
+          </div>
+          <span class="focus-input100" data-placeholder="&#xf191;"></span>
+        </div>
+
+        <!-- Name -->
+        <div class="wrap-input100 validate-input" data-validate="Enter name">
+          <!-- <input class="input100" type="password" name="pass" placeholder="Password"> -->
+          <input type="text" class="form-control input100" placeholder="name" name="name" [(ngModel)]="user.name" #name="ngModel" required>
+          <div class="invalid-feedback" *ngIf="name.errors && name.errors.required">
+            Please enter your password.
+          </div>
+          <span class="focus-input100" data-placeholder="&#xf191;"></span>
+        </div>
+
+        <!-- Preferences -->
+        <div class="wrap-input100 validate-input" data-validate="Enter preferences">
+          <div class="form-check form-check-inline contact100-form-checkbox">
+            <input class="input-checkbox100" type="checkbox" id="inlineCheckbox1" value="cine">
+            <label class="label-checkbox100" for="inlineCheckbox1">Cine</label>
+          </div>
+          <div class="form-check form-check-inline contact100-form-checkbox">
+            <input class="input-checkbox100" type="checkbox" id="inlineCheckbox2" value="teatro">
+            <label class="label-checkbox100" for="inlineCheckbox2">Teatro</label>
+          </div>
+          <div class="form-check form-check-inline contact100-form-checkbox">
+            <input class="input-checkbox100" type="checkbox" id="inlineCheckbox3" value="deporte">
+            <label class="label-checkbox100" for="inlineCheckbox3">Deporte</label>
+          </div>
+        </div>
+
+        <div class="form-actions container-login100-form-btn">
+          <div class="col-4">
+            <hr>
+            <!-- <a class="login100-form-btn" [routerLink]="['/register']">Register</a> -->
+            <button type="submit" class="btn btn-primary btn-block login100-form-btn">Register</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </div>
+
 
 <div class="row justify-content-md-center">
   <div class="col-4">
