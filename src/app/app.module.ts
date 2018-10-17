@@ -30,6 +30,11 @@ import { EsriMapComponent } from './components/misc/esri-map/esri-map.component'
 // import { AgmCoreModule } from '@agm/core';
 // import { EsriMapComponent } from './esri-map/esri-map.component';
 
+import { AgmCoreModule } from '@agm/core';
+import { MapComponent } from './components/misc/map/map.component';
+import { EventComponent } from './components/event/event/event.component';
+
+
 
 @NgModule({
   declarations: [
@@ -52,7 +57,9 @@ import { EsriMapComponent } from './components/misc/esri-map/esri-map.component'
     EventNightlifeComponent,
     EventSportComponent,
     CategoryPipe,
-    EsriMapComponent
+    EsriMapComponent,
+    MapComponent,
+    EventComponent
     // EventMapComponent
 
     // EsriMapComponent
@@ -61,7 +68,10 @@ import { EsriMapComponent } from './components/misc/esri-map/esri-map.component'
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBYJ_Kqaf1Lv5_SxVhMZYS-hTs7oYodpVY'
+    })
     // AgmCoreModule.forRoot({
     //   apiKey: ''
     // })

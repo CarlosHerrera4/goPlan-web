@@ -1,9 +1,10 @@
 
 <!-- Region Map -->
 <div id="regionMap">
-  <app-esri-map [order]="order" [events]="events">
+  <!-- <app-esri-map [order]="aa" [events]="events">
     
-  </app-esri-map>
+  </app-esri-map> -->
+  <app-map></app-map>
 </div>
 
 <!-- Filters-->
@@ -39,7 +40,7 @@
   </div>
 
   <div class="card-deck mt-5">
-    <app-event-item *ngFor="let event of events | category: order" [order]="order" [event]="event"></app-event-item>
+    <app-event-item #aa *ngFor="let event of events | category: order" [order]="order" [event]="event"></app-event-item>
   </div>
  
 

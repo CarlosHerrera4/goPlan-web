@@ -1,4 +1,5 @@
 import { EventListComponent } from './components/event/event-list/event-list.component';
+import { EventComponent } from './components/event/event/event.component';
 import { CanLeavePostCreateGuard } from './shared/guards/can-leave-post-create.guard';
 import { PostDetailsComponent } from './components/post/post-details/post-details.component';
 import { PostListComponent } from './components/post/post-list/post-list.component';
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'users',  canActivate: [IsAuthenticatedGuard], component: UserListComponent },
-  { path: 'events', canActivate: [IsAuthenticatedGuard], component: EventListComponent}
+  { path: 'events', canActivate: [IsAuthenticatedGuard], component: EventListComponent},
+  { path: 'events/:id', canActivate: [IsAuthenticatedGuard], component: EventComponent }
+
   // { path: 'users/:userId/posts',  canActivate: [IsAuthenticatedGuard], canDeactivate:[CanLeavePostCreateGuard], component: PostListComponent },
   // { path: 'users/:userId/posts/:id',  canActivate: [IsAuthenticatedGuard], resolve: { post: PostResolverGuard }, component: PostDetailsComponent }
 ];
