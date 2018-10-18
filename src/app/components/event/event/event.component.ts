@@ -1,6 +1,6 @@
 import { Event } from './../../../shared/models/event.model';
 import { EventService } from './../../../shared/services/event.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 
@@ -11,10 +11,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class EventComponent implements OnInit {
 
-  event: Event;
-
+  @Input() event: Event;
+  activatedRoute: ActivatedRoute;
   constructor(
-    private activatedRoute: ActivatedRoute,
+    // private activatedRoute: ActivatedRoute,
     private eventService: EventService
 
   ) { }
@@ -25,7 +25,7 @@ export class EventComponent implements OnInit {
       this.idParam = params['id'];
       console.log("Params: " + this.idParam)
     });
-    debugger
+    
     this.eventService.getEvent(this.idParam).subscribe((event: Event) => {
       this.event = event;
       console.log("Evento: " + event)
