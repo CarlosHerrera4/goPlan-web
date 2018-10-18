@@ -40,4 +40,11 @@ export class EventItemComponent implements OnInit, OnDestroy {
     this.onAuthUserChanges.unsubscribe();
   }
 
+  goToEventItem(event: Event) {
+    this.router.navigate(['/events', event.id])
+  }
+  // goToDetail(station: StationList) {
+  //   this.router.navigate(['/station', station.modo, station.idEstacion]);
+  // }
+
 }

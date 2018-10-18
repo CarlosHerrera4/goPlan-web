@@ -75,6 +75,19 @@ export class EventService extends BaseApiService {
             );
     }
 
+    getEvent(id: string): Observable<Event | ApiError> {
+        return this.http.get<Event>(`${EventService.USER_API}/${id}`, BaseApiService.defaultOptions)
+            .pipe(
+                map((event: Event) => Object.assign(new Event(), event)),
+                catchError(this.handleError));    }
+
+    // get(userId: string, id: String): Observable<Post | ApiError> {
+    //     return this.http.get<Post>(`${PostService.USER_API}/${userId}${PostService.POST_API}/${id}`, BaseApiService.defaultOptions)
+    //         .pipe(
+    //             map((post: Post) => Object.assign(new Post(), post)),
+    //             catchError(this.handleError));
+    // }
+
     onEventChanges(): Observable<Event> {
         return this.eventSubject.asObservable();
     }

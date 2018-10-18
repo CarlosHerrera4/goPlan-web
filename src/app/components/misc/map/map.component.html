@@ -5,7 +5,7 @@
     (changePattern)="onPatternChange($event)"  
     >
     <!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
-    <agm-marker 
+    <!-- <agm-marker 
       *ngFor="let event of events | category: finderPattern" 
       [latitude]="event.location.coordinates[1]"
       [longitude]="event.location.coordinates[0]" 
@@ -18,6 +18,14 @@
         [longitude]="event.location.coordinates[0]" >
       </agm-info-window>
 
-    </agm-marker>
+    </agm-marker> -->
+
+<agm-marker *ngFor="let event of events" [latitude]="event.location.coordinates[1]"
+  [longitude]="event.location.coordinates[0]" [openInfoWindow]=true [title]="event.name">
+
+  <agm-info-window [isOpen]=false [latitude]="event.location.coordinates[1]" [longitude]="event.location.coordinates[0]">
+  </agm-info-window>
+
+</agm-marker>
   </agm-map>
 </div>

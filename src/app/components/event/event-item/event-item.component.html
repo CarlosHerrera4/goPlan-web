@@ -1,5 +1,5 @@
 
-<div (click)="sumSize" class="tile inner flip-box scale-in-center">
+<div class="tile inner flip-box scale-in-center" (click)="goToEventItem(event)">
   <div class="flip-box-inner">
 
     <div class="flip-box-front" [ngStyle]= "{'background-image': 'url('+  event.cover_image  +')'}">

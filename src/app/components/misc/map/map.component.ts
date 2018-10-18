@@ -49,32 +49,11 @@ constructor(private eventService: EventService) { }
       console.log(map.getBounds());
     }, 0);
 
-    // this.mapService.getStationsMap(map.getCenter().lng(), map.getCenter().lat()).subscribe(
-    //   (stations: StaionsMap[]) => {
-    //     this.stations = stations
-    //   }
-    // )
 
     console.log(map)
 
     map.addListener('center_changed', () => {
-      // this.stations = [];
-      // this.mapService.getStationsMap(map.getCenter().lng(), map.getCenter().lat()).subscribe(
-      //   (stations: StaionsMap[]) => {
-      //     this.stations = stations
-      //   }
-      // )
 
-      //   let lng = map.getCenter().lng();
-      //   let lat = map.getCenter().lat();
-
-
-
-      // });
-
-      // map.addListener("dragend", function () {
-      //   //do what you want
-      //   console.log("Hola")
     });
   }
 }
