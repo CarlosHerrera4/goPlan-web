@@ -20,7 +20,7 @@
 
     </agm-marker> -->
 
-<agm-marker *ngFor="let event of events" [latitude]="event.location.coordinates[1]"
+<agm-marker *ngFor="let event of events | category: order" [latitude]="event.location.coordinates[1]"
   [longitude]="event.location.coordinates[0]" [openInfoWindow]=true [title]="event.name">
 
   <agm-info-window [isOpen]=false [latitude]="event.location.coordinates[1]" [longitude]="event.location.coordinates[0]">
