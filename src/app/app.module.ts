@@ -32,6 +32,7 @@ import { EsriMapComponent } from './components/misc/esri-map/esri-map.component'
 
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './components/misc/map/map.component';
+import { MapDetailComponent } from './components/misc/map-detail/map-detail.component';
 import { EventComponent } from './components/event/event/event.component';
 import { PlanComponent } from './components/plan/plan.component';
 
@@ -60,6 +61,7 @@ import { PlanComponent } from './components/plan/plan.component';
     CategoryPipe,
     EsriMapComponent,
     MapComponent,
+    MapDetailComponent,
     EventComponent,
     PlanComponent
     // EventMapComponent

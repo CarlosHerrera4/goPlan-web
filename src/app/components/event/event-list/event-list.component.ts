@@ -1,3 +1,4 @@
+
 import { EventService } from './../../../shared/services/event.service';
 import { Event } from './../../../shared/models/event.model';
 import { Component, OnInit, Output } from '@angular/core';

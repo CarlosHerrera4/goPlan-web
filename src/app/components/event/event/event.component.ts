@@ -12,7 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class EventComponent implements OnInit {
 
   // @Input() event: Event;
-  _event: Event;
+  @Output() _event: Event;
   //activatedRoute: ActivatedRoute;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,3 +36,4 @@ export class EventComponent implements OnInit {
   }
 
 }
+

@@ -1,0 +1,10 @@
+agm-map {
+  height: 100%;
+  width: 100%;
+}
+
+.container-map {
+    height: 100%;
+  /* height: calc(100vh - 106px); */
+  background-color: #fff;
+}

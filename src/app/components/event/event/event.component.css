@@ -34,6 +34,7 @@
 
 .grid-image {
   width: 100%;
+  height: 70vh;
 }
 
 .grid-text {
@@ -43,6 +44,8 @@
 }
 
 .rowDate {
+  width: 100%;
+  float: left;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -57,4 +60,13 @@
   width: 100%;
   height: 500px;
   margin-bottom: 30px;
+}
+
+.date-event {
+  margin: 0 1rem 1rem 1.5rem;
+  background-size: 2.3rem;
+  /* background: "url('https://webclient2-static.feverup.com/assets/images/date.svg')"; */
+  background-image: url('https://webclient2-static.feverup.com/assets/images/date.svg');
+  /* padding-left: 3rem; */
+  font-weight: bold;
 }

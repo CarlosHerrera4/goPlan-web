@@ -3,15 +3,23 @@
   <div class="grid-item">
     <h2 class="grid-text">{{ _event.name}}</h2>
     <div class="rowDate">
-      <div>{{ _event.first_active_session_date | date:'E W LLL' }}</div>
-      <div>A partir de las {{ _event.first_active_session_date | date:'HH:mm' }}</div>
+      <!-- <span style="background-image: url('https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/calendar-16.png')"></span> -->
+      <div class="date-event">{{ _event.first_active_session_date | date:'E W LLL' }}, A partir de las {{ _event.first_active_session_date |
+      date:'HH:mm' }} </div>
+      <br>
+      <!-- <div>  A partir de las {{ _event.first_active_session_date | date:'HH:mm' }}</div> -->
     </div>
-    <div>
-      <button class="btn btn-primary" data-toggle="modal" data-target="#mapEvent">¿Dónde y cómo llegar?</button>
+    <div style="margin: 2px; display: flex; justify-content: center; width: 100%;">
+      <button class="btn btn-dark" data-toggle="modal" data-target="#mapEvent">¿Dónde y cómo llegar?</button>
     </div>
-    <img src="https://getuikit.com/v2/docs/images/placeholder_600x400.svg" class="grid-image" />
+    <img src="{{ _event.cover_image }}" class="grid-image" />
 
   <div id="description"></div>
+
+  <br>
+  <div>
+    <button type="button" class="btn btn-primary btn-lg btn-block">{{ _event.price }}  -  Comprar </button>
+  </div>
 
 </div>
 
@@ -19,21 +27,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="regionMap">
-        <app-map></app-map>
+        <app-map-detail></app-map-detail>
       </div>
 
-      <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-footer">
+        <img src="https://cdn4.iconfinder.com/data/icons/banking-finance/32/walk-16.png" alt="" (click)="notesWalk()">
+        <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div> -->
-      <!-- <div class="modal-body">
-        ...
-      </div>-->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

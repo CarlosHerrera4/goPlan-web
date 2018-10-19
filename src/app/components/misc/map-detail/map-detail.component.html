@@ -2,8 +2,7 @@
 <div class="container-map">
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapReady)="mapReady($event)"
     (boundsChange)="boundsChange($event)"
-    (changePattern)="onPatternChange($event)"  
-    >
+    (changePattern)="onPatternChange($event)"  >
     <!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
     <!-- <agm-marker 
       *ngFor="let event of events | category: finderPattern" 
@@ -20,16 +19,12 @@
 
     </agm-marker> -->
 
-<agm-marker *ngFor="let event of events | category: order" [latitude]="event.location.coordinates[1]"
-  [longitude]="event.location.coordinates[0]" [openInfoWindow]=true [title]="event.name">
+  <agm-marker [latitude]="_event.location.coordinates[1]"
+    [longitude]="_event.location.coordinates[0]" [openInfoWindow]=true [title]="_event.name">
 
-  <agm-info-window [isOpen]=false [latitude]="event.location.coordinates[1]" [longitude]="event.location.coordinates[0]">
-  </agm-info-window>
+    <!-- <agm-info-window [isOpen]=false [latitude]="_event.location.coordinates[1]" [longitude]="_event.location.coordinates[0]">
+    </agm-info-window> -->
 
-<!-- </agm-marker *ngIf="_event" [latitude]="_event.location.coordinates[0]" [longitude]="_event.location.coordinates[1]">
-
-<agm-marker > -->
-
-</agm-marker>
+  </agm-marker>
   </agm-map>
 </div>

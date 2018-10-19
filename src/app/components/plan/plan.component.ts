@@ -1,4 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
+import { EventService } from './../../shared/services/event.service';
+import { Event } from './../../shared/models/event.model';
 
 @Component({
   selector: 'app-plan',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlanComponent implements OnInit {
 
-  constructor() { }
+  events: Array<Event> = [];
+
+  constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    this.eventService.allEvents()
+      .subscribe(
+        (events: Array<Event>) => {
+          console.log(events)
+          this.events = events;
+
+        });
   }
 
 }
