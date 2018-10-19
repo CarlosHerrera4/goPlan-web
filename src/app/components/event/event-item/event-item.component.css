@@ -80,9 +80,17 @@
   background-color: white;
 }
 
+.grid-item .hola {
+  display: none;
+}
+
 .grid-item:hover {
   transform: scale(1.5);
   z-index: 2;
+}
+
+.grid-item:hover .hola {
+  display: block;
 }
 
 .grid-image {

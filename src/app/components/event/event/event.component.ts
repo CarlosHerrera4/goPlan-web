@@ -11,10 +11,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class EventComponent implements OnInit {
 
-  @Input() event: Event;
-  activatedRoute: ActivatedRoute;
+  // @Input() event: Event;
+  _event: Event;
+  //activatedRoute: ActivatedRoute;
   constructor(
-    // private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private eventService: EventService
 
   ) { }
@@ -27,8 +28,10 @@ export class EventComponent implements OnInit {
     });
     
     this.eventService.getEvent(this.idParam).subscribe((event: Event) => {
-      this.event = event;
-      console.log("Evento: " + event)
+      this._event = event[0];
+      console.log("Evento: " + event.name)
+
+      document.getElementById('description').innerHTML = event[0].description;
     });
   }
 
