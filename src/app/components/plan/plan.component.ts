@@ -15,12 +15,19 @@ export class PlanComponent implements OnInit {
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.eventService.allEvents()
+    this.eventService.getRandomEvents()
       .subscribe(
         (events: Array<Event>) => {
-          console.log(events)
-          this.events = events;
-
+          // console.log("Plan component" + events[0][0].name)
+          // for (i = 0; i < events[0]; i++) {
+          //   this.events = events[0]
+          // }
+          debugger
+          let randomEvents = [];
+          let firstEvent = events[0];
+          randomEvents.push(firstEvent[Math.round(Math.random() * 10)])
+          // this.events = [events[0][1]];
+          this.events = randomEvents;
         });
   }
 

@@ -14,7 +14,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 })
 export class EventService extends BaseApiService {
     private static readonly USER_API = `${BaseApiService.BASE_API}/events`;
-
+    private static readonly _USER_API = `${BaseApiService.BASE_API}/randomplan`; 
     private events: Array<Event> = [];
 
     private params = new HttpParams().set('category', "cine");
@@ -79,12 +79,29 @@ export class EventService extends BaseApiService {
         return this.http.get<Event>(`${EventService.USER_API}/${id}`, BaseApiService.defaultOptions)
             .pipe(
                 map((event: Event) => Object.assign(new Event(), event)),
-                catchError(this.handleError));    }
+                catchError(this.handleError));    
+    }
 
 
     onEventChanges(): Observable<Event> {
         return this.eventSubject.asObservable();
     }
+
+    getRandomEvents(): Observable<Array <Event> | ApiError> {
+        return this.http.get<Array<Event>>(`${EventService._USER_API}`, BaseApiService.defaultOptions)
+            // return this.http.get<Array<Event>>(EventService.USER_API, this.params)
+            .pipe(
+                map((events: Array<Event>) => {
+                    events = events.map(event => Object.assign(new Event(), event));
+                    this.events = events;
+                    this.notifyUsersChanges();
+                    return events;
+                }),
+                catchError(this.handleError)
+            );
+    }
+        
+    
 
     // onUsersChanges(): Observable<Array<User>> {
     //     return this.usersSubject.asObservable();
