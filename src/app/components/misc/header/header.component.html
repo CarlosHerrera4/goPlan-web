@@ -23,7 +23,11 @@
 
       <ul class="navbar-nav mr-auto" style="margin-right: 30px !important;">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/givemeaplan']" style="color: #66ff99 !important">QUIERO UN PLAN!</a>
+          <a class="nav-link" *ngIf="router.isActive('/givemeaplan', true)" [routerLink]="['/events']" style="color: #66ff99 !important">EVENTOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="router.isActive('/events', true)" [routerLink]="['/events']" [routerLink]="['/givemeaplan']"
+            style="color: #66ff99 !important">QUIERO UN PLAN!</a>
         </li>
       </ul>
 
