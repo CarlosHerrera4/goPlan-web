@@ -1,38 +1,17 @@
 
-.grid-item {
-  display: block;
-  width: 300px;
-  height: 200px;
-  margin-top: 1em;
-  /* flex-basis: 30%;
-  width: 30%; */
-  height: auto;
-  border: 3px solid black;
-  z-index: 1;
-  cursor: pointer;
-  transition: .35s ease;
-  background-color: white;
-}
-
-.grid-item .hola {
-  display: none;
-}
-
-/* .grid-item:hover {
-  transform: scale(1.5);
-  z-index: 2;
-} */
-
-.grid-item:hover .hola {
-  display: block;
-}
-
-.grid-image {
+.grid {
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.grid-text {
-  color: blue;
-  font-family: sans-serif;
-  padding: 1em;
+.row {
+  text-align: center;
+  font-size: x-large;
+}
+
+.row-button {
+  text-align: left;
 }

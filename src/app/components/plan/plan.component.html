@@ -1,7 +1,24 @@
-<p>
-  {{ events[0][0].name }}
-</p>
+
+<div class="row-button">
+  <div class="col">
+  <button (click)="anotherRandomPlan()" class="btn btn-success">Dame otro plan</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">Basado en tus preferencias
+  </div>
+</div>
 
 <div class="grid">
   <app-event-item *ngFor="let event of events" [event]="event"></app-event-item>
+</div>
+
+<div class="row">
+  <div class="col">A la aventura!!
+  </div>
+</div>
+
+<div class="grid">
+  <app-event-item *ngFor="let event of _events" [event]="event"></app-event-item>
 </div>
