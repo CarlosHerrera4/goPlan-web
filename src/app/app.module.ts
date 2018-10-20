@@ -36,6 +36,7 @@ import { MapDetailComponent } from './components/misc/map-detail/map-detail.comp
 import { EventComponent } from './components/event/event/event.component';
 import { PlanComponent } from './components/plan/plan.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { AgmDirectionModule } from 'agm-direction';
 
 
 
@@ -77,7 +78,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYJ_Kqaf1Lv5_SxVhMZYS-hTs7oYodpVY'
-    })
+    }),
+    AgmDirectionModule 
     // AgmCoreModule.forRoot({
     //   apiKey: ''
     // })

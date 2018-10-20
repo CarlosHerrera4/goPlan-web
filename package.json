@@ -25,6 +25,7 @@
     "@types/chart.js": "^2.7.37",
     "@types/googlemaps": "^3.30.15",
     "@types/jquery": "^3.3.17",
+    "agm-direction": "^0.7.3",
     "angular-bootstrap-md": "^6.2.5",
     "angular-esri-components": "^2.0.0",
     "angular-esri-map": "^2.0.5",

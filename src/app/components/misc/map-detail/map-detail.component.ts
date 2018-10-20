@@ -3,6 +3,7 @@ import { Event } from './../../../shared/models/event.model';
 import { Component, OnInit, ViewChild, Output, Input } from '@angular/core';
 import { AgmMap } from '@agm/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { debug } from 'util';
 
 // import { MapService } from '../../shared/services/map.service';
 // import { StaionsMap } from '../../shared/models/staions-map';
@@ -14,6 +15,12 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class MapDetailComponent implements OnInit {
 
   _event: Event;
+  _latUserPosition: Number;
+  _lngUserPosition: Number;
+  origin: Object;
+  destination: Object;
+  // _userPosition: 
+  // _event: Array<Event> = [];
   idParam: string;
   // stations: Array<StaionsMap>
 
@@ -38,11 +45,36 @@ constructor(
       this._event = event[0];
       this.lat = event[0].location.coordinates[1];
       this.lng = event[0].location.coordinates[0];
+
+      this.destination = {
+        lat: this.lat,
+        lng: this.lng
+      }
+
       this.zoom = 18;
       console.log("Evento: " + event.name)
 
       // document.getElementById('description').innerHTML = event[0].description;
     });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(coords => {
+        // debugger
+        this._latUserPosition = coords.coords.latitude;
+        this._lngUserPosition = coords.coords.longitude;
+        this.zoom = 12;
+
+        this.origin = {
+          lat: this._latUserPosition,
+          lng: this._lngUserPosition
+        }
+        // console.log("Coords: " + coords.coords)
+        // console.log("Lat: " + coords.coords.latitude)
+        // console.log("long: " + coords.coords.longitude)
+      }
+
+      );
+    }
   }
 
   boundsChange(event) {
