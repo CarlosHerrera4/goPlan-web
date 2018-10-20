@@ -12,10 +12,12 @@ export class PlanComponent implements OnInit {
 
   events: Array<Event> = [];
   _events: Array<Event> = [];
+  _events_: Array<Event> = [];
 
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
+    // Preferences
     this.eventService.getRandomEvents()
       .subscribe(
         (events: Array<Event>) => {
@@ -36,6 +38,7 @@ export class PlanComponent implements OnInit {
           this.events = randomEvents;
         });
 
+    // Adventure
     this.eventService.allEvents()
       .subscribe(
         (events: Array<Event>) => {
@@ -46,6 +49,20 @@ export class PlanComponent implements OnInit {
           randomEvents.push(events[Math.round(Math.random() * events.length)]);
 
           this._events = randomEvents;
+        }
+      )
+
+      // Near me
+    this.eventService.allEvents()
+      .subscribe(
+        (events: Array<Event>) => {
+
+          let randomEvents = [];
+          randomEvents.push(events[Math.round(Math.random() * events.length)]);
+          randomEvents.push(events[Math.round(Math.random() * events.length)]);
+          randomEvents.push(events[Math.round(Math.random() * events.length)]);
+
+          this._events_ = randomEvents;
         }
       )
   }
@@ -75,6 +92,19 @@ export class PlanComponent implements OnInit {
           randomEvents.push(events[Math.round(Math.random() * events.length)]);
 
           this._events = randomEvents;
+        }
+      )
+
+    this.eventService.allEvents()
+      .subscribe(
+        (events: Array<Event>) => {
+
+          let randomEvents = [];
+          randomEvents.push(events[Math.round(Math.random() * events.length)]);
+          randomEvents.push(events[Math.round(Math.random() * events.length)]);
+          randomEvents.push(events[Math.round(Math.random() * events.length)]);
+
+          this._events_ = randomEvents;
         }
       )
   }
