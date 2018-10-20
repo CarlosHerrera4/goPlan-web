@@ -9,6 +9,12 @@
       <br>
       <!-- <div>  A partir de las {{ _event.first_active_session_date | date:'HH:mm' }}</div> -->
     </div>
+    <div class="rowDate">
+      <div class="date-event">{{ _event.address }}</div>
+    </div>
+    <div class="rowDate">
+      <div class="date-event">Puntuación: {{ _event.rating.average | number:'1.1-1' }}  -  Valoraciones: {{ _event.rating.num_ratings }}</div>
+    </div>
     <div style="margin: 2px; display: flex; justify-content: center; width: 100%;">
       <button class="btn btn-dark" data-toggle="modal" data-target="#mapEvent">¿Dónde y cómo llegar?</button>
     </div>

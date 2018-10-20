@@ -81,7 +81,7 @@
         <!-- Name -->
         <div class="wrap-input100 validate-input" data-validate="Enter name">
           <!-- <input class="input100" type="password" name="pass" placeholder="Password"> -->
-          <input type="text" class="form-control input100" placeholder="name" name="name" [(ngModel)]="user.name" #name="ngModel" required>
+          <!-- <input type="text" class="form-control input100" placeholder="name" name="name" [(ngModel)]="user.name" #name="ngModel" required> -->
           <div class="invalid-feedback" *ngIf="name.errors && name.errors.required">
             Please enter your name.
           </div>
