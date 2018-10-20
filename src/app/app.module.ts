@@ -35,6 +35,7 @@ import { MapComponent } from './components/misc/map/map.component';
 import { MapDetailComponent } from './components/misc/map-detail/map-detail.component';
 import { EventComponent } from './components/event/event/event.component';
 import { PlanComponent } from './components/plan/plan.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 
@@ -63,7 +64,8 @@ import { PlanComponent } from './components/plan/plan.component';
     MapComponent,
     MapDetailComponent,
     EventComponent,
-    PlanComponent
+    PlanComponent,
+    PaymentComponent
     // EventMapComponent
 
     // EsriMapComponent
